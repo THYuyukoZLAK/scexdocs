@@ -1,0 +1,24 @@
+# ---- 运行时组件与二进制：不纳入版本库 ----
+# Windows 版 nginx 发行包（nginx.exe、html、运行时 logs 等）
+/nginx/
+# Linux 版 nginx 二进制目录（若有）
+nginx-linux/
+
+# ---- 日志（含真实客户端 IP、会话/CSRF token，属运营数据）----
+*.log
+
+# ---- 备份与临时备份副本 ----
+/backups/
+*.bak
+*.bak-*
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+
+# ---- 编辑器 / 操作系统 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/

@@ -1,0 +1,617 @@
+/* SCEX docsify theme — based on skill-webstyle.md */
+:root {
+  color-scheme: dark;
+  --sc-bg: #022335;
+  --sc-panel: #093750;
+  --sc-accent: #1985a1;
+  --sc-primary: #03a4fb;
+  --sc-primary-hover: #29b2fc;
+  --sc-heading: #d2f7fd;
+  --sc-text: #FFFFFF;
+  --sc-muted: #abc0ca;
+  --sc-border: #0f5377;
+  --sc-line: #063145;
+  --sc-row-hover: #0a3f5c;
+
+  --color-bg: #022335af;
+  --border-radius: 0;
+
+  /* docsify v5 theme properties */
+  --theme-color: var(--sc-primary);
+  --base-background-color: var(--sc-bg);
+  --base-color: var(--sc-text);
+  --base-font-family: "JetBrains Mono", "思源黑体 CN", "Sarasa Gothic SC",
+    "Source Han Sans SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --base-font-size: 15px;
+  --base-line-height: 1.75;
+  --heading-color: var(--sc-heading);
+  --link-color: #68c8fd;
+  --link-color--hover: #86d3fd;
+  --sidebar-background: var(--sc-panel);
+  --sidebar-border-color: var(--sc-accent);
+  --sidebar-name-color: var(--sc-heading);
+  --sidebar-nav-link-color: var(--sc-text);
+  --sidebar-nav-link-color--active: var(--sc-primary);
+  --code-block-background: #000;
+  --code-inline-background: #000;
+  --code-inline-color: #fff;
+  --blockquote-color: var(--sc-muted);
+  --blockquote-border-color: var(--sc-muted);
+  --cover-bg: linear-gradient(135deg, #022335 0%, #093750 72%, #064260 100%);
+  --cover-bg-overlay: rgba(2, 35, 53, 0.18);
+  --cover-color: var(--sc-text);
+  --cover-title-color: var(--sc-heading);
+  --cover-title-font: 700 clamp(2.4rem, 7vw, 4.8rem) var(--base-font-family);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--sc-bg);
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--base-font-family);
+}
+
+body {
+  color: var(--sc-text) !important;
+  font-size: 15px;
+}
+
+body,
+.content,
+.markdown-section,
+.markdown-section p,
+.markdown-section li,
+.markdown-section td,
+.markdown-section strong,
+.markdown-section em {
+  color: var(--sc-text);
+}
+
+#app {
+  color: var(--sc-muted);
+  letter-spacing: 0.08em;
+}
+
+/* Sidebar and navigation */
+.sidebar {
+  background: var(--sc-panel) !important;
+  box-shadow: 1px 0 12px rgba(0, 0, 0, 0.2);
+  color: var(--sc-text) !important;
+  overflow-x: hidden;
+}
+
+.sidebar,
+.sidebar p,
+.sidebar li,
+.sidebar-nav,
+.sidebar-nav li,
+.sidebar-nav li > p,
+.sidebar-nav a,
+.sidebar-nav a:visited {
+  color: var(--sc-text) !important;
+}
+
+.sidebar .app-name {
+  border-bottom: 1px solid var(--sc-border);
+  margin: 0 18px 14px;
+  padding: 18px 0 14px;
+  text-align: left;
+}
+
+.sidebar .app-name-link {
+  color: var(--sc-heading);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.sidebar-nav li > p {
+  color: var(--sc-heading) !important;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-transform: uppercase;
+}
+
+/* Remove the dash markers added to generated table-of-contents entries. */
+.sidebar-nav li::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Keep every list level full-width; indentation belongs to the links. */
+.sidebar-nav,
+.sidebar-nav ul,
+.sidebar-nav li {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100%;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav a {
+  background: transparent !important;
+  border-left: 0 !important;
+  box-shadow: none;
+  color: var(--sc-text) !important;
+  display: block;
+  padding-left: 32px !important;
+  padding-right: 20px !important;
+  transition: background-color 0.15s, color 0.15s;
+  width: 100%;
+}
+
+.sidebar-nav ul ul ul a {
+  padding-left: 52px !important;
+}
+
+.sidebar-nav ul ul ul ul a {
+  padding-left: 72px !important;
+}
+
+.sidebar-nav a:hover {
+  background: var(--sc-row-hover) !important;
+  color: var(--sc-heading) !important;
+}
+
+.sidebar-nav li.active > a {
+  background: rgba(3, 164, 251, 0.12) !important;
+  color: var(--sc-primary) !important;
+
+}
+
+.sidebar-toggle{
+  background: var(--sc-panel)
+}
+
+.sidebar-toggle:hover{
+  background: var(--sc-panel)
+}
+
+.sidebar-toggle-button,
+button .sidebar-toggle {
+  border-radius: 0;
+  background: var(--sc-panel) !important;
+  border: 1px solid var(--sc-accent) !important;
+  border-radius: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28) !important;
+  color: var(--sc-heading) !important;
+}
+
+.sidebar-toggle-button:hover {
+  background: var(--sc-bg) !important;
+  border-color: var(--sc-primary) !important;
+}
+
+.sidebar-toggle span,
+.sidebar-toggle-button span,
+button.sidebar-toggle span {
+  background-color: var(--sc-primary) !important;
+  color: var(--sc-primary) !important;
+}
+
+/* Cover page */
+.cover {
+  border-bottom: 2px solid var(--sc-accent);
+}
+
+.cover-main {
+  max-width: 760px;
+}
+
+.cover-main > h1 {
+  border: 0;
+  color: var(--sc-heading);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 24px rgba(3, 164, 251, 0.22);
+}
+
+.cover-main > blockquote {
+  border-left: 4px solid var(--sc-accent);
+  color: var(--sc-text);
+  margin: 1.5rem auto;
+  max-width: 620px;
+  padding: 8px 18px;
+}
+
+.cover-main > ul {
+  color: var(--sc-muted);
+  display: inline-block;
+  text-align: left;
+}
+
+.cover-main > p:last-child a {
+  background: var(--sc-bg);
+  border: 1px solid var(--sc-border);
+  border-radius: 0;
+  color: var(--sc-text);
+  display: inline-block;
+  font-weight: 500;
+  margin: 0.35rem;
+  padding: 0.55rem 1.25rem;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.cover-main > p:last-child a:last-child {
+  background: var(--sc-primary);
+  border-color: var(--sc-primary);
+  color: var(--sc-bg);
+  font-weight: 700;
+}
+
+.cover-main > p:last-child a:hover {
+  background: var(--sc-primary-hover);
+  border-color: var(--sc-primary-hover);
+  color: var(--sc-bg);
+}
+
+/* Markdown content */
+.content {
+  background: var(--sc-bg);
+}
+
+.markdown-section {
+  color: var(--sc-text) !important;
+  max-width: 900px;
+}
+
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4,
+.markdown-section h5,
+.markdown-section h6 {
+  border-bottom: 1px solid var(--sc-border);
+  color: var(--sc-heading);
+  font-weight: 500;
+  margin-top: 2rem;
+  padding-bottom: 0.3rem;
+}
+
+.markdown-section h1 {
+  border-bottom-color: #c4c4c4;
+}
+
+.markdown-section h2 {
+  border-bottom-color: var(--sc-muted);
+}
+
+.markdown-section a:not(.anchor) {
+  background-image: linear-gradient(var(--sc-primary), var(--sc-primary));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+  color: #68c8fd;
+  text-decoration: none;
+  transition: background-size 0.15s cubic-bezier(0.42, 0, 0.14, 1), color 0.15s;
+}
+
+.markdown-section a:not(.anchor):hover {
+  background-size: 100% 100%;
+  color: var(--sc-bg);
+}
+
+.markdown-section blockquote {
+  border-left: 5px solid var(--sc-muted);
+  color: var(--sc-muted);
+  margin-left: 0;
+  padding: 6px 16px;
+}
+
+.markdown-section hr {
+  border-color: var(--sc-border);
+}
+
+.markdown-section table {
+  border-collapse: collapse;
+  display: table;
+  width: 100%;
+}
+
+.markdown-section th {
+  background: var(--sc-panel);
+  border-color: var(--sc-border);
+  color: var(--sc-muted);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+.markdown-section td {
+  border-color: var(--sc-line);
+}
+
+.markdown-section tr:nth-child(2n) {
+  background: transparent;
+}
+
+.markdown-section tbody tr {
+  transition: background-color 0.15s;
+}
+
+.markdown-section tbody tr:hover {
+  background: var(--sc-row-hover);
+}
+
+.markdown-section code,
+.markdown-section pre,
+.markdown-section pre > code {
+  background: #000 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 14px;
+}
+
+.markdown-section code {
+  padding: 2px 5px;
+}
+
+.markdown-section pre {
+  border-left: 4px solid var(--sc-accent) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* GitHub-style line numbers (dark) for fenced code blocks */
+.markdown-section pre > code {
+  counter-reset: line;
+}
+
+.markdown-section pre > code > .line {
+  counter-increment: line;
+  display: block;
+  line-height: 21px;
+  min-height: 21px;
+  padding-left: 3.5em;
+  position: relative;
+  white-space: pre;
+}
+
+.markdown-section pre > code > .line::before {
+  border-right: 1px solid #2d3740;
+  color: #5f6b76;
+  content: counter(line);
+  font-size: 12px;
+  left: 0;
+  line-height: 21px;
+  padding-right: 1em;
+  position: absolute;
+  text-align: right;
+  top: 0;
+  user-select: none;
+  width: 2.5em;
+}
+
+.markdown-section img {
+  border-radius: 0;
+}
+
+/* Reusable components documented by skill-webstyle.md */
+.card {
+  background: var(--sc-panel);
+  border-left: 4px solid var(--sc-accent);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  padding: 18px 24px;
+}
+
+.card-title {
+  border-bottom: 1px solid var(--sc-border);
+  color: var(--sc-heading);
+  font-size: 16px;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+}
+
+.warning,
+.caution,
+.approved,
+.tips {
+  background: #380000;
+  border-left: 5px solid #a80000;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+  color: #d25b5b;
+  font-size: 15px;
+  margin: 12px 0;
+  padding: 8px 12px;
+}
+
+.caution {
+  background: #382200;
+  border-left-color: #a85a00;
+  color: #d58d34;
+}
+
+.approved {
+  background: #003800;
+  border-left-color: #00a800;
+  color: #4dcf73;
+}
+
+.tips {
+  background: #00272e;
+  border-left-color: #008fa8;
+  color: #55c6da;
+}
+
+.status-badge {
+  border: 1px solid;
+  border-radius: 0;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 1px 8px;
+}
+
+.status-badge.ongoing {
+  background: rgba(0, 214, 138, 0.08);
+  border-color: #00d68a;
+  color: #00d68a;
+}
+
+.status-badge.ended {
+  background: rgba(15, 83, 119, 0.15);
+  border-color: var(--sc-border);
+  color: var(--sc-muted);
+}
+
+input,
+textarea,
+select,
+button,
+.btn {
+  border-radius: 0;
+}
+
+input,
+textarea,
+select {
+  background: var(--sc-bg);
+  border: 1px solid var(--sc-border);
+  color: var(--sc-text);
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--sc-accent);
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sc-panel);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.63);
+}
+
+::selection {
+  background: rgba(3, 164, 251, 0.28);
+}
+
+@media (max-width: 768px) {
+  .markdown-section {
+    padding: 24px 18px 40px;
+  }
+
+  .cover-main {
+    padding: 0 20px;
+  }
+
+  .cover-main > p:last-child a {
+    min-width: 9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+h1 .app-name-link{
+  color: var(--sc-heading) !important;
+}
+
+/* ===== docsify 插件适配：全文搜索 / 复制到剪贴板 ===== */
+
+/* 全文搜索：输入框 */
+.sidebar .search {
+  margin: 10px 16px 10px;
+}
+
+.sidebar .search input {
+  background: var(--sc-bg);
+  border: 1px solid var(--sc-border);
+  border-radius: 0;
+  color: var(--sc-text);
+  font-family: var(--base-font-family);
+  font-size: 13px;
+  outline: none;
+  padding: 6px 10px;
+  width: 100%;
+}
+
+.sidebar .search input:focus {
+  border-color: var(--sc-accent);
+}
+
+.sidebar .search input::placeholder {
+  color: var(--sc-muted);
+}
+
+/* 全文搜索：结果面板 */
+.sidebar .search .results-panel {
+  background: var(--sc-panel);
+  border: 1px solid var(--sc-border);
+  color: var(--sc-text);
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.sidebar .search .results-panel a {
+  color: var(--sc-text);
+  display: block;
+  padding: 6px 10px;
+}
+
+.sidebar .search .results-panel a:hover {
+  background: var(--sc-row-hover);
+  color: var(--sc-heading);
+}
+
+.sidebar .search .results-panel .search-keyword,
+.sidebar .search .results-panel mark,
+.sidebar .search .results-panel em {
+  background: transparent;
+  color: var(--sc-primary);
+  font-style: normal;
+}
+
+/* 复制到剪贴板：按钮 */
+.docsify-copy-code-button {
+  background: var(--sc-primary);
+  border: 0;
+  border-radius: 0;
+  color: var(--sc-bg);
+  font-family: var(--base-font-family);
+  font-size: 12px;
+  line-height: 1;
+  padding: 4px 10px;
+  z-index: 1;
+}
+
+.docsify-copy-code-button:hover {
+  background: var(--sc-primary-hover);
+}

@@ -1,0 +1,65 @@
+# SCEX DOCS — nginx 配置模板 (Linux 部署)
+# 由 start-server.sh 根据项目实际路径动态生成：
+#   @ROOT@  站点根目录（项目根，绝对路径）
+#   @MIME@  mime.types 的绝对路径
+
+worker_processes  1;
+error_log  stderr;
+pid        /tmp/scex-nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       @MIME@;
+    default_type  application/octet-stream;
+    access_log    off;
+    sendfile      on;
+    keepalive_timeout  65;
+
+    server {
+        listen       8880;
+        server_name  localhost;
+
+        # 站点根目录 = 项目根（含 index.html 与各 .md 页面）
+        root   @ROOT@;
+        index  index.html;
+
+        charset utf-8;
+
+        # Bug report API is handled by a Python service bound to localhost.
+        location = /api/bugreport {
+            limit_except POST { deny all; }
+            proxy_pass http://127.0.0.1:8881/api/bugreport;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            client_max_body_size 64k;
+        }
+
+        # 工单已改为公开文档（docs/bugreports/*.md），随文档站一并提供，无需访问控制。
+
+        # Markdown 源文件以正确 MIME 类型返回（docsify 通过 XHR 加载）
+        # no-cache：修改 .md 后浏览器能立即获取新内容
+        location ~* \.md$ {
+            types { text/markdown md; }
+            add_header Cache-Control "no-cache";
+        }
+
+        # 频繁更新的页面与脚本（html / css / js）不做强缓存，确保文档更新立即生效
+        location ~* \.(html?|css|js)$ {
+            add_header Cache-Control "no-cache";
+        }
+
+        # 图片与字体等静态资源短缓存（配合 Last-Modified 校验）
+        location ~* \.(woff2?|png|jpe?g|gif|webp|svg|ico)$ {
+            expires 1d;
+            add_header Cache-Control "public, max-age=86400";
+        }
+
+        # 其余请求直接返回文件；docsify 使用 hash 路由，无需 SPA 回退
+        location / {
+            try_files $uri $uri/ =404;
+        }
+    }
+}

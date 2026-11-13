@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>SCEX 文档站</title>
+  <meta name="description" content="SCEX 项目文档与技术资料">
+  <meta name="theme-color" content="#022335">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="js/jetbrains-mono.css?v=2">
+  <link rel="stylesheet" href="js/docsify-core.min.css?v=2">
+  <link rel="stylesheet" href="js/docsify-vue.min.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+  <div id="app">SYSTEM INITIALIZING...</div>
+  <script>
+    window.$docsify = {
+      name: 'SCEX DOCS',
+      repo: '',
+      basePath: 'docs/',
+      loadSidebar: true,
+      onlyCover: false,
+      auto2top: true,
+      subMaxLevel: 2,
+      maxLevel: 4,
+      skipLink: '跳到主要内容',
+      search: {
+        placeholder: '搜索',
+        noData: '找不到结果',
+        depth: 2,
+        maxAge: 86400000,
+        paths: 'auto'
+      },
+      copyCode: {
+        buttonText: '复制',
+        errorText: '复制失败',
+        successText: '已复制'
+      }
+    }
+  </script>
+  <!-- GitHub-style line numbers for code blocks -->
+  <script>
+    window.$docsify.plugins = (window.$docsify.plugins || []).concat([
+      function (hook) {
+        hook.doneEach(function () {
+          document.querySelectorAll('.markdown-section pre > code').forEach(function (code) {
+            if (code.dataset.linenums === 'true') return;
+            code.dataset.linenums = 'true';
+            var lines = (code.textContent || '').replace(/\n$/, '').split('\n');
+            code.textContent = '';
+            lines.forEach(function (line) {
+              var span = document.createElement('span');
+              span.className = 'line';
+              span.textContent = line || ' ';
+              code.appendChild(span);
+            });
+          });
+        });
+      }
+    ]);
+  </script>
+  <!-- Docsify resource -->
+  <script src="js/docsify.min.js?v=2"></script>
+  <!-- Plugins (本地化，不依赖外部 CDN)：全文搜索 / 图片缩放 / 复制到剪贴板 -->
+  <script src="js/search.min.js?v=2"></script>
+  <script src="js/zoom-image.min.js?v=2"></script>
+  <script src="js/docsify-copy-code.min.js?v=2"></script>
+</body>
+</html>

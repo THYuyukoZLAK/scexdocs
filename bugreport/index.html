@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#022335">
+  <title>工单提交</title>
+  <link rel="stylesheet" href="../js/jetbrains-mono.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="report-card" aria-labelledby="page-title">
+    <h1 id="page-title">工单提交</h1>
+    <p class="intro">请先选择问题所属服务器和工单类型，再填写具体内容。</p>
+
+    <form id="report-form" novalidate>
+      <div class="top-row">
+        <div class="form-field">
+          <label for="category">服务器</label>
+          <select id="category" name="category" required>
+            <option value="" selected disabled>请选择服务器</option>
+            <option value="category-1">整合包侧「须臾」</option>
+            <option value="category-2">创造养老侧「永远」</option>
+            <option value="category-3">怀旧向子服「旧梦」</option>
+          </select>
+        </div>
+
+        <fieldset class="type-field">
+          <legend>类型</legend>
+          <div class="type-buttons">
+            <input id="type-bug" type="radio" name="type" value="bug" required>
+            <label class="type-button bug" for="type-bug">BUG</label>
+
+            <input id="type-request" type="radio" name="type" value="request">
+            <label class="type-button request" for="type-request">新功能申请</label>
+
+            <input id="type-other" type="radio" name="type" value="other">
+            <label class="type-button other" for="type-other">其他</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="form-field title-field">
+        <label for="title">标题</label>
+        <input id="title" name="title" type="text" maxlength="100" required
+               placeholder="请简要概括问题或功能申请">
+      </div>
+
+      <div class="form-field content-field">
+        <label for="content">工单内容</label>
+        <textarea id="content" name="content" rows="9" maxlength="10000" required
+                  placeholder="请描述问题、复现步骤、预期结果，或新功能的用途……"></textarea>
+      </div>
+
+      <div class="bottom-row">
+        <div class="form-field">
+          <label for="reporter">提交者 Minecraft ID</label>
+          <input id="reporter" name="reporter" type="text" minlength="3" maxlength="16"
+                 pattern="[A-Za-z0-9_]{3,16}" autocomplete="nickname" required
+                 placeholder="Minecraft ID">
+        </div>
+        <button id="submit-button" type="submit">提交工单</button>
+      </div>
+
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">请勿填写</label>
+        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+:root {
+  color-scheme: dark;
+  --page-bg: #022335;
+  --panel-bg: #093750;
+  --field-bg: #022335;
+  --accent: #1985a1;
+  --accent-hover: #1a9bbe;
+  --heading: #d2f7fd;
+  --text: #abc0ca;
+  --muted: #828282;
+  --border: #0f5377;
+  --danger: #dc3545;
+  --success: #198754;
+  --warning: #ffc107;
+  --neutral: #5c6970;
+}
+
+* { box-sizing: border-box; }
+
+html { background: transparent; }
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: var(--page-bg);
+  color: var(--text);
+  font: 15px/1.6 fontjmono, "JetBrains Mono", "思源黑体 CN", "Sarasa Gothic SC",
+        "Source Han Sans SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button, input, select, textarea { font: inherit; }
+
+.report-card {
+  width: min(90ch, 100%);
+  margin: 0 auto;
+  padding: 20px 24px 24px;
+  background: var(--panel-bg);
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .2);
+}
+
+h1 {
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.intro { margin: 10px 0 18px; color: var(--muted); font-size: 13px; }
+
+.top-row, .bottom-row { display: grid; gap: 16px; align-items: end; }
+.top-row { grid-template-columns: 1fr 2fr; }
+.bottom-row { grid-template-columns: 2fr 1fr; margin-top: 16px; }
+
+.form-field { min-width: 0; }
+.form-field label, .type-field legend {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.form-field input, .form-field textarea, .form-field select {
+  display: block;
+  width: 100%;
+  min-height: 40px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  outline: none;
+  background: var(--field-bg);
+  color: var(--text);
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.form-field textarea { min-height: 150px; resize: vertical; }
+.form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(25, 133, 161, .18);
+}
+.form-field :invalid:not(:placeholder-shown) { border-color: var(--danger); }
+.title-field, .content-field { margin-top: 16px; }
+
+.type-field { min-width: 0; margin: 0; padding: 0; border: 0; }
+.type-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.type-buttons input { position: absolute; opacity: 0; pointer-events: none; }
+.type-button {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 8px;
+  border: 1px solid var(--neutral);
+  background: rgba(92, 105, 112, .18);
+  color: var(--text);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color .15s, background-color .15s, color .15s;
+}
+.type-button:hover { border-color: var(--text); }
+.type-buttons input:focus-visible + .type-button { outline: 2px solid var(--heading); outline-offset: 2px; }
+.type-buttons input:checked + .bug { border-color: var(--danger); background: var(--danger); color: #fff; }
+.type-buttons input:checked + .request { border-color: var(--success); background: var(--success); color: #fff; }
+.type-buttons input:checked + .other { border-color: var(--warning); background: var(--warning); color: #022335; }
+
+#submit-button {
+  min-height: 40px;
+  padding: 7px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 0;
+  background: var(--accent);
+  color: var(--page-bg);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s;
+}
+#submit-button:hover:not(:disabled) { border-color: var(--accent-hover); background: var(--accent-hover); }
+#submit-button:disabled { cursor: wait; opacity: .55; }
+
+.form-status { min-height: 1.6em; margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+.form-status.success { color: #75b798; }
+.form-status.warning { color: #ffda6a; }
+.form-status.error { color: #ea868f; }
+.honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+::selection { background: rgba(3, 164, 251, .28); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--panel-bg); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .18); }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, .63); }
+
+@media (max-width: 700px) {
+  body { padding: 10px; }
+  .report-card { padding: 16px; }
+  .top-row, .bottom-row { grid-template-columns: 1fr; }
+  .type-buttons { grid-template-columns: 1fr; }
+}

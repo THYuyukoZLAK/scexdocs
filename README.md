@@ -55,3 +55,7 @@ npx serve -l 8880 .
 ## GitHub Pages
 
 仓库根目录含 `.nojekyll`，可直接用 Pages 托管：Settings → Pages → 部署分支选 `main`、目录选 `/ (root)`。
+
+## 许可
+
+[MIT](LICENSE) © 2026 西行寺夜和 / THYuyukoZLAK
